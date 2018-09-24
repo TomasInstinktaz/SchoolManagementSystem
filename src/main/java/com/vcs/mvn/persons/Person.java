@@ -63,4 +63,24 @@ public abstract class Person {
     public void setAge(int age) {
         this.age = age;
     }
+
+    @Override
+    public int hashCode() {
+        return (name.toLowerCase() + surname.toLowerCase()).hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj instanceof Person) {
+            Person obj1 = (Person) obj;
+            return obj1.name.equalsIgnoreCase(name) && obj1.surname.equalsIgnoreCase(surname);
+        }
+
+        return false;
+    }
 }
